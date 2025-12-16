@@ -178,5 +178,5 @@ def rrt_star_tunable(c, alpha=1.0, loops=800, output_prefix="rrt_tunable"):
 if __name__ == '__main__':
     np.random.seed(42)
     # Run for alpha = 10.0 (Very High incentive for plastic)
-    c3 = ContinuousPlannerUtil('ocean.png', 'gpgp_density.png', scale=0.8)
+    c3 = ContinuousPlannerUtil('ocean_real.png', 'summer_2002_day0_density.png', scale=0.8)
     rrt_star_tunable(c3, alpha=10.0, loops=800)
