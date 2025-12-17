@@ -164,13 +164,13 @@ def rrt_star_tunable(c, alpha=1.0, loops=800, output_prefix="rrt_tunable", cost_
   P = 0.0
   ratio = 0.0
 
+  path = []
   if d_goal < 0.1:
       L = closest_to_goal.dist_acc
       P = closest_to_goal.plastic_acc
       ratio = L / (P + 1e-6)
       print(f"Goal Reached! Total Distance: {L:.2f}, Total Plastic: {P:.2f}, Ratio (L/P): {ratio:.2f}")
 
-      path = []
       curr = closest_to_goal
       while curr:
           path.append(curr.state)
@@ -180,7 +180,7 @@ def rrt_star_tunable(c, alpha=1.0, loops=800, output_prefix="rrt_tunable", cost_
   c.save_image_to_gif_image_stack()
   c.output_gif_animation(f'{output_prefix}_alpha_{alpha}_mode_{cost_mode}', fps=30, num_seconds_at_end=2)
 
-  return L, P, ratio
+  return L, P, ratio, path
 
 if __name__ == '__main__':
     np.random.seed(42)
